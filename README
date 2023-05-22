@@ -1,20 +1,19 @@
-# `pp(1)`
+# `pp`
 
 a preprocessor
 
-`pp(1)` allows embedding
-[`sh(1)`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)
-code in files of any type by nesting it inside the `#!\n` token, where
-`\n` is a new line. That means that if you'd like a simple loop or an
-`if` inside an HTML file for instance,
-you could use `pp(1)`.
+`pp` allows embedding
+`sh` code in files of any type by nesting it inside the `#!\n` token,
+where `\n` is a new line. That means that if you'd like a simple loop
+or an `if` inside an HTML file for instance,
+you could use `pp`.
 
-## Basic usage
+## Usage
 
 For the following code:
 
 	<!doctype html>
-	<title>pp(1) example</title>
+	<title>pp example</title>
 	<ul>
 	#!
 	i=1
@@ -35,10 +34,10 @@ For the following code:
 	#!
 	</ul>
 
-`pp(1)` outputs:
+`pp` outputs:
 
 	<!doctype html>
-	<title>pp(1) example</title>
+	<title>pp example</title>
 	<ul>
 	        <li class=odd>1</li>
 	        <li class=even>2</li>
@@ -65,22 +64,22 @@ You can also pass arguments to it by appending them to the command call:
 	</p>
 
 Calling the above code with
-`pp tmp.upphtml 'pp(1) example' 'hello, world'`
+`pp tmp.upphtml 'pp example' 'hello, world'`
 will result in:
 
 	<!doctype html>
-	<title>pp(1) example</title>
+	<title>pp example</title>
 	<p>
 	hello world
 	</p>
 
 ## Pipes
 
-`pp(1)`'s `stdin` is sent to the child
-[`sh(1)`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)
+`pp`'s `stdin` is sent to the child
+[`sh`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)
 
 	<!doctype html>
-	<title>pp(1) example</title>
+	<title>pp example</title>
 	<p>
 	#!
 		cat
@@ -90,20 +89,20 @@ will result in:
 `echo 'hello, world' | pp tmp.upphtml` will output:
 
 	<!doctype html>
-	<title>pp(1) example</title>
+	<title>pp example</title>
 	<p>
 	hello, world
 	</p>
 
 ## Debugging
 
-`pp(1)` also takes an optional `-d` flag. If passed, `pp(1)` will dump
+`pp` also takes an optional `-d` flag. If passed, `pp` will dump
 the generated
-[`sh(1)`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)
+[`sh`](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)
 code instead of executing it:
 
 	<!doctype html>
-	<title>pp(1) example</title>
+	<title>pp example</title>
 	<ul>
 	#!
 	i=1
@@ -127,7 +126,7 @@ code instead of executing it:
 `pp -d tmp.upphtml` will output:
 
 	echo "<!doctype html>
-	<title>pp(1) example</title>
+	<title>pp example</title>
 	<ul>"
 	i=1
 	while test $i -le 10
@@ -146,9 +145,9 @@ code instead of executing it:
 
 	<!doctype html>
 	<html lang=en>
-	<title>pp(1)</title>
+	<title>pp</title>
 	<meta charset=UTF-8>
-	<meta name=viewport content='width=device-width'>
+	<meta name=viewport content='width=device-width, initial-scale=1'>
 	<link rel=stylesheet href=../theme.css>
 	<body>
 	<a href=../#myprojects>Home</a>
