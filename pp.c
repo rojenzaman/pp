@@ -351,7 +351,7 @@ int main(int argc, char **argv)
 			for (i = 2; i < argc; i++)
 				eargv[i+2] = argv[i];
 
-			if (execv("/bin/sh", eargv) == -1) {
+			if (execv("/bin/bash", eargv) == -1) {
 				perror(argv0);
 				return 1;
 			}
